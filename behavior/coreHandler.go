@@ -2,7 +2,7 @@ package behavior
 
 import (
 	"github.com/gofiber/fiber/v2"
-	mods "github.com/tmazitov/fiberplus/internal/mods"
+	mods "github.com/tmazitov/fiberplus/mods"
 )
 
 type CoreHandler[Services any, Input any, Output any] struct {

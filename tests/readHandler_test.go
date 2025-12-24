@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tmazitov/fiberplus"
-	"github.com/tmazitov/fiberplus/internal/behavior"
+	"github.com/tmazitov/fiberplus/behavior"
 )
 
 type ReadHandlerRequest struct {

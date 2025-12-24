@@ -2,7 +2,7 @@ package behavior
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/tmazitov/fiberplus/internal/mods"
+	"github.com/tmazitov/fiberplus/mods"
 )
 
 type ReadHandler[Services any, Input any] struct {

@@ -4,8 +4,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
 	fiberplus "github.com/tmazitov/fiberplus"
+	"github.com/tmazitov/fiberplus/behavior"
 	"github.com/tmazitov/fiberplus/examples/services"
-	"github.com/tmazitov/fiberplus/internal/behavior"
 )
 
 type ReadHandlerRequest struct {

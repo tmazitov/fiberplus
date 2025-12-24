@@ -2,7 +2,7 @@ package mods
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/tmazitov/fiberplus/internal/utils"
+	"github.com/tmazitov/fiberplus/utils"
 )
 
 type JsonInputMod[I any] struct{}
