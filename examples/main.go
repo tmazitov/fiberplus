@@ -4,9 +4,9 @@ import (
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 
+	fiberplus "github.com/tmazitov/fiberplus"
 	"github.com/tmazitov/fiberplus/examples/handlers"
 	"github.com/tmazitov/fiberplus/examples/services"
-	fiberplus "github.com/tmazitov/fiberplus/internal"
 )
 
 func main() {

@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	fiberplus "github.com/tmazitov/fiberplus/internal"
+	"github.com/tmazitov/fiberplus"
 	"github.com/tmazitov/fiberplus/internal/behavior"
 )
 

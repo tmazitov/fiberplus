@@ -3,8 +3,8 @@ package handlers
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
+	fiberplus "github.com/tmazitov/fiberplus"
 	"github.com/tmazitov/fiberplus/examples/services"
-	fiberplus "github.com/tmazitov/fiberplus/internal"
 	"github.com/tmazitov/fiberplus/internal/behavior"
 )
 
