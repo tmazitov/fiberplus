@@ -13,6 +13,7 @@ func (i *JsonInputMod[I]) Setup() fiber.Handler {
 		var (
 			inputPayload I
 		)
+
 		if err := ctx.BodyParser(&inputPayload); err != nil {
 			return fiber.ErrBadRequest
 		}
@@ -23,8 +24,4 @@ func (i *JsonInputMod[I]) Setup() fiber.Handler {
 		ctx.Locals("Input", inputPayload)
 		return ctx.Next()
 	}
-}
-
-func (i *JsonInputMod[O]) Type() ModeType {
-	return IntroType
 }

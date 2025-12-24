@@ -6,7 +6,6 @@ import (
 
 type Handler[Services any] interface {
 	Init()
+	Mods() []fiber.Handler
 	Handle(app *App[Services]) fiber.Handler
-	IntroMods() []fiber.Handler
-	OutroMods() []fiber.Handler
 }

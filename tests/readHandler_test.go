@@ -17,7 +17,7 @@ type ReadHandlerRequest struct {
 }
 
 type ReadHandlerExample struct {
-	behavior.ReadHandler[Services, ReadHandlerRequest]
+	behavior.ReadHandler[Services, *ReadHandlerRequest]
 }
 
 type ReadHandlerResponse struct {

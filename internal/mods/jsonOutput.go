@@ -4,8 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type JsonOutputMod[O any] struct {
-}
+type JsonOutputMod[O any] struct{}
 
 func (o *JsonOutputMod[O]) Setup() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
@@ -32,8 +31,4 @@ func (o *JsonOutputMod[O]) Setup() fiber.Handler {
 		}
 		return nil
 	}
-}
-
-func (o *JsonOutputMod[O]) Type() ModeType {
-	return OutroType
 }

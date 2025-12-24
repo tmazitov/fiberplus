@@ -14,7 +14,7 @@ func main() {
 		innerServices = &services.Services{
 			Database: services.Database{},
 		}
-		a = fiberplus.NewApp(&fiberplus.AppConfig[services.Services]{
+		a = fiberplus.NewApp(&fiberplus.AppConfig[servicesg.Services]{
 			Services: innerServices,
 		})
 	)

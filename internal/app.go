@@ -33,20 +33,21 @@ func (a *App[Services]) Group(route string, handlers ...fiber.Handler) *Group[Se
 	return newGroup(a, route, handlers...)
 }
 
-func (a *App[Services]) Add(e *Endpoint[Services]) {
+func (a *App[Services]) Add(e *Endpoint[Services]) *App[Services] {
+
 	e.Handler.Init()
 
-	intro := e.Handler.IntroMods()
+	mods := e.Handler.Mods()
 	main := e.Handler.Handle(a)
-	outro := e.Handler.OutroMods()
 
-	var pipeline = make([]fiber.Handler, 0, len(intro)+len(outro)+1)
+	var pipeline = make([]fiber.Handler, 0, len(mods)+1)
 
-	pipeline = append(pipeline, intro...)
-	pipeline = append(pipeline, outro...)
+	pipeline = append(pipeline, mods...)
 	pipeline = append(pipeline, main)
 
 	a.core.Add(e.Method, e.Route, pipeline...)
+
+	return a
 }
 
 func (a *App[Services]) Run(addr string) error {

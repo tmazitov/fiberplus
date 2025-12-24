@@ -31,14 +31,12 @@ func (g *Group[Services]) Add(e *Endpoint[Services]) *Group[Services] {
 
 	e.Handler.Init()
 
-	intro := e.Handler.IntroMods()
+	mods := e.Handler.Mods()
 	main := e.Handler.Handle(g.app)
-	outro := e.Handler.OutroMods()
 
-	var pipeline = make([]fiber.Handler, 0, len(intro)+len(outro)+1)
+	var pipeline = make([]fiber.Handler, 0, len(mods)+1)
 
-	pipeline = append(pipeline, intro...)
-	pipeline = append(pipeline, outro...)
+	pipeline = append(pipeline, mods...)
 	pipeline = append(pipeline, main)
 
 	g.core.Add(e.Method, e.Route, pipeline...)

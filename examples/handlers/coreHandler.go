@@ -22,9 +22,17 @@ type CoreHandlerExample struct {
 func (h *CoreHandlerExample) Handle(app *fiberplus.App[services.Services]) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 
-		input := ctx.Locals("Input").(*CoreHandlerRequest)
+		var (
+			input *CoreHandlerRequest
+			ok    bool
+		)
 
-		ctx.Locals("Output", &CoreHandlerResponse{Message: input.Message})
+		if input, ok = h.RequestBody(ctx); !ok {
+			h.Reply(ctx, &CoreHandlerResponse{Message: "nah!"})
+			return nil
+		}
+
+		h.Reply(ctx, &CoreHandlerResponse{Message: input.Message})
 
 		return nil
 	}
