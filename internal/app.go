@@ -1,4 +1,4 @@
-package app
+package fiberplus
 
 import (
 	"github.com/gofiber/fiber/v2"
@@ -30,7 +30,7 @@ func (a *App[Services]) Core() *fiber.App {
 }
 
 func (a *App[Services]) Group(route string, handlers ...fiber.Handler) *Group[Services] {
-	return NewGroup(a, route, handlers...)
+	return newGroup(a, route, handlers...)
 }
 
 func (a *App[Services]) Add(e *Endpoint[Services]) {
@@ -43,8 +43,8 @@ func (a *App[Services]) Add(e *Endpoint[Services]) {
 	var pipeline = make([]fiber.Handler, 0, len(intro)+len(outro)+1)
 
 	pipeline = append(pipeline, intro...)
-	pipeline = append(pipeline, main)
 	pipeline = append(pipeline, outro...)
+	pipeline = append(pipeline, main)
 
 	a.core.Add(e.Method, e.Route, pipeline...)
 }

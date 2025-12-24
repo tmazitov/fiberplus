@@ -1,4 +1,4 @@
-package app
+package fiberplus
 
 type Endpoint[Services any] struct {
 	Method  string

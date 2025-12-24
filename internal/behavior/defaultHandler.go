@@ -3,7 +3,7 @@ package behavior
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
-	"github.com/tmazitov/fiberplus/internal/app"
+	fiberplus "github.com/tmazitov/fiberplus/internal"
 	mods "github.com/tmazitov/fiberplus/internal/mods"
 )
 
@@ -17,7 +17,7 @@ func (h *DefaultHandler[Services]) Init() {
 	h.outroMods = nil
 }
 
-func (h *DefaultHandler[Services]) Handle(app *app.App[Services]) fiber.Handler {
+func (h *DefaultHandler[Services]) Handle(app *fiberplus.App[Services]) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		log.Info("default:")
 

@@ -9,7 +9,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/require"
-	"github.com/tmazitov/fiberplus/internal/app"
+	fiberplus "github.com/tmazitov/fiberplus/internal"
 )
 
 type Database struct{}
@@ -23,17 +23,17 @@ type Services struct {
 }
 
 // Helper function to create a test app instance
-func setupTestApp() *app.App[Services] {
+func setupTestApp() *fiberplus.App[Services] {
 	services := &Services{
 		Database: Database{},
 	}
 
-	testApp := app.NewApp(&app.AppConfig[Services]{
+	testApp := fiberplus.NewApp(&fiberplus.AppConfig[Services]{
 		Services: services,
 	})
 
 	testApp.Group("/test").
-		Add(&app.Endpoint[Services]{Method: "POST", Route: "/in", Handler: &ReadHandlerExample{}})
+		Add(&fiberplus.Endpoint[Services]{Method: "POST", Route: "/in", Handler: &ReadHandlerExample{}})
 
 	return testApp
 }

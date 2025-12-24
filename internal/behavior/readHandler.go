@@ -3,7 +3,7 @@ package behavior
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
-	"github.com/tmazitov/fiberplus/internal/app"
+	fiberplus "github.com/tmazitov/fiberplus/internal"
 	"github.com/tmazitov/fiberplus/internal/mods"
 )
 
@@ -17,7 +17,7 @@ func (h *ReadHandler[Services, Input]) Init() {
 	}
 }
 
-func (h *ReadHandler[Services, Input]) Handle(app *app.App[Services]) fiber.Handler {
+func (h *ReadHandler[Services, Input]) Handle(app *fiberplus.App[Services]) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		log.Info("read:")
 

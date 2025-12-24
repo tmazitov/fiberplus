@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/tmazitov/fiberplus/internal/app"
+	fiberplus "github.com/tmazitov/fiberplus/internal"
 	"github.com/tmazitov/fiberplus/internal/behavior"
 )
 
@@ -25,7 +25,7 @@ type ReadHandlerResponse struct {
 	Message string              `json:"message"`
 }
 
-func (h *ReadHandlerExample) Handle(app *app.App[Services]) fiber.Handler {
+func (h *ReadHandlerExample) Handle(app *fiberplus.App[Services]) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 
 		input := ctx.Locals("Input").(*ReadHandlerRequest)

@@ -10,7 +10,7 @@ func (h *CoreHandler[Services, Input, Output]) Init() {
 	h.introMods = []mods.Mod{
 		&mods.JsonInputMod[Input]{},
 	}
-	h.introMods = []mods.Mod{
+	h.outroMods = []mods.Mod{
 		&mods.JsonOutputMod[Output]{},
 	}
 }

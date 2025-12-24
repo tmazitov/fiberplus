@@ -1,10 +1,6 @@
 package mods
 
 import (
-	"errors"
-	"fmt"
-	"net/http"
-
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -13,26 +9,28 @@ type JsonOutputMod[O any] struct {
 
 func (o *JsonOutputMod[O]) Setup() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
+		if err := ctx.Next(); err != nil {
+			return err
+		}
 
 		var (
-			outputRaw     any = ctx.Locals("Output", nil)
+			outputRaw     any = ctx.Locals("Output")
 			outputPayload O
 			ok            bool
 		)
 
 		if outputRaw == nil {
-			return ctx.Next()
+			return nil
 		}
 
 		if outputPayload, ok = outputRaw.(O); !ok {
-			return errors.New("jsonOutputMode error : failed to typecast output value")
+			return fiber.NewError(fiber.StatusInternalServerError, "failed to typecast output")
 		}
 
 		if err := ctx.JSON(outputPayload); err != nil {
-			ctx.Status(http.StatusInternalServerError)
-			return fmt.Errorf("jsonOutputMode error : failed to convert the output to JSON format : %w", err)
+			return fiber.NewError(fiber.StatusInternalServerError, "failed to convert the output to JSON format")
 		}
-		return ctx.Next()
+		return nil
 	}
 }
 

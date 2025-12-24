@@ -1,4 +1,4 @@
-package app
+package fiberplus
 
 import (
 	"github.com/gofiber/fiber/v2"
